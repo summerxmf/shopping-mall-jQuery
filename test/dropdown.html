@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>下拉菜单</title>
+	<link rel="stylesheet" href="../css/base.css">
+	<style>
+		/*下拉菜单样式dropdown*/
+		.dropdown{
+		    position: relative;
+		}
+		.dropdown-toggle{
+			position: relative;
+			z-index: 2;
+			
+		}
+		.dropdown-arrow{
+			display: inline-block;			
+			border-image-repeat: no-repeat;
+			vertical-align: middle;
+		}
+		.dropdown-layer{
+		    display: none;
+		    position: absolute;		    
+		    z-index: 1;		
+		    overflow: hidden;   
+		}
+		/* menu dropdown*/
+		.menu{
+			height: 44px;
+			margin-right: 10px;
+		}
+		
+		.menu .dropdown-toggle{			
+			display:block;
+			height: 100%;
+			padding: 0 16px 0 12px;
+			border-left: 1px solid #f3f5f7;
+			border-right: 1px solid #f3f5f7;
+
+		}
+
+		.menu .dropdown-arrow{			
+			 
+			  margin-left:8px;		
+			
+		}
+		.menu .dropdown-layer{		
+			position: absolute;  
+		    top:43px;
+		    background-color:#fff;
+		    
+		    border: 1px solid #cdd0d4;
+		}
+		.dropdown-left{
+			left:0;
+			right:auto;
+
+		}
+		.dropdown-right{
+			right:0;
+			left:auto;
+
+		}
+		.menu-item{
+			display:block;
+			/*height:30px;*/
+			line-height:30px;
+			padding:0 12px;
+			color:#4d555d;
+			white-space: nowrap;
+
+		}
+		.menu-item:hover{
+			background-color: #f3f5f7;
+		}
+
+		.menu-active .dropdown-toggle{
+			background-color:#fff;
+		    border-color:#cdd0d4;
+		}		
+
+		[class*='-active'] .dropdown-arrow{			
+			-o-transform: rotate(180deg);
+			-ms-transform: rotate(180deg);
+			-moz-transform: rotate(180deg);
+			-webkit-transform: rotate(180deg);
+			transform: rotate(180deg);
+			color: #f0f144;
+		}
+		
+		@font-face {font-family: "iconfont";
+		  src: url('iconfont/iconfont.eot?t=1567559861848'); /* IE9 */
+		  src: url('iconfont/iconfont.eot?t=1567559861848#iefix') format('embedded-opentype'), /* IE6-IE8 */ 
+		  url('iconfont/iconfont.woff?t=1567559861848') format('woff'),
+		  url('iconfont/iconfont.ttf?t=1567559861848') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+		  url('iconfont/iconfont.svg?t=1567559861848#iconfont') format('svg'); /* iOS 4.1- */
+		}
+		.icon{
+			font-family: "iconfont" !important;
+		 	font-size: 14px;
+		  	font-style: normal;
+		  	-webkit-font-smoothing: antialiased;
+		  	-moz-osx-font-smoothing: grayscale;
+		}
+
+		.transition{
+			-o-transition: all 1s;
+			-ms-transition: all 1s;
+			-moz-transition: all 1s;
+			-webkit-transition: all 1s;
+			transition: all 1s;
+		}
+		.fadeOut{
+			opacity: 0;	
+			visibility: hidden;	
+		}
+		.slideUpDownCollapse{
+			height: 0 !important;
+			padding-top: 0 !important;
+			padding-bottom: 0 !important;
+		}
+		.slideLeftRightCollapse{
+			width: 0 !important;
+			padding-left: 0 !important;
+			padding-right: 0 !important;
+		}
+		.dropdown-loading{
+			width: 32px;
+			height: 32px;
+			background: url(../img/loading.gif) no-repeat;
+			margin: 20px;
+		}	
+	</style>
+</head>
+<body>
+	
+	<div class="dropdown menu fl" data-active ='menu' data-load='dropdown.json'>
+        <a href="javascipt:;" class="dropdown-toggle">我的慕淘<i class="dropdown-arrow icon">&#xe602;</i></a>
+        <ul class="dropdown-layer dropdown-left">
+        	<li class="dropdown-loading"></li>
+            <!-- <li><a href="###" target="_blank" class="menu-item"></a>已买到的宝贝</li> -->
+            <!-- <li><a href="###" target="_blank" class="menu-item">我的足迹</a></li> -->
+        </ul>
+    </div>
+    <div class="dropdown menu fl" data-active ='menu'>
+        <a href="javascipt:;" class="dropdown-toggle link">收藏夹<i class="dropdown-arrow icon">&#xe612;</i></a>
+        <ul class="dropdown-layer dropdown-left">        	
+            <li><a href="###" target="_blank" class="menu-item">收藏的宝贝</a></li>
+            <li><a href="###" target="_blank" class="menu-item">收藏的店铺</a></li>
+        </ul>
+    </div>
+    <button id="btn-show">点我显示</button>
+	<button id="btn-hide">点我隐藏</button>
+    <script src="../js/jquery-1.7.1.min.js"></script>	
+    <script src="../js/transition.js"></script>
+	<script src="../js/showHide.js"></script>
+    <script src="../js/dropdown.js"></script>
+	<script>
+		
+		$('.dropdown').on('dropdown-show', function (e) {
+			var $this = $(this),
+				dataLoad = $this.data('load');
+			if(!dataLoad) return;			 	
+			if(!$this.data('loaded')){
+				var $layer = $(this).find('.dropdown-layer'),
+					html='';
+				$.getJSON(dataLoad, function(data){
+				setTimeout(function() {
+					for(var i=0; i<data.length; i++){
+					html += '<li><a href="'+data[i].url+'" target="_blank" class="menu-item">'+data[i].name+'</a></li>';				
+				}
+				$layer.html(html);
+				$this.data['loaded']= true;
+
+				}, 1000);
+				
+			});
+			}
+			
+			
+		});
+
+		$('.dropdown').dropdown({			
+			css3:true,
+			js: true,
+			animation: 'fade',
+			// delay: 200
+		});
+		$('#btn-show').on('click', function(){
+			$('.dropdown').dropdown('show');
+		});
+		$('#btn-hide').on('click', function(){
+			$('.dropdown').dropdown('hide');
+		});
+		
+	</script>
+	
+</body>
+</html>
