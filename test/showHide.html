@@ -2,99 +2,89 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>显示隐藏模块</title>
+	<title>showhide</title>
 	<link rel="stylesheet" href="../css/base.css">
 	<style>
 		body{
-			width: 400px;
-			margin: 0 auto;
+			width:400px;
+			margin:0 auto;
 		}
 		.btn{
-			width: 50%;
-			height: 30px;
+			width:50%;
+			height:30px;
 		}
 		#box{
-			width: 100%;
-			height: 200px;		
-			background-color: red;
-			overflow: hidden;
+			color:white;
+			display:none;
+			width:400px;
+			/*height:200px;*/
+			background-color:blue;
+			overflow:hidden;
 		}
 		.transition{
-			-o-transition: all 1s;
-			-ms-transition: all 1s;
-			-moz-transition: all 1s;
-			-webkit-transition: all 1s;
-			transition: all 1s;
+			transition: all 0.5s;
 		}
 		.fadeOut{
-			opacity: 0;	
-			visibility: hidden;	
+			visibility:hidden !important;
+			opacity:0 !important;
 		}
 		.slideUpDownCollapse{
-			height: 0 !important;
-			padding-top: 0 !important;
-			padding-bottom: 0 !important;
+			height:0 !important;
+			padding-top:0 !important;
+			padding-bottom:0 !important;
 		}
 		.slideLeftRightCollapse{
-			width: 0 !important;
-			padding-left: 0 !important;
-			padding-right: 0 !important;
+			width:0 !important;
+			padding-left:0 !important;
+			padding-right:0 !important;
 		}
 	</style>
 </head>
-
 <body>
-	<button class="btn" id="show">显示</button><button class="btn" id="hide">隐藏</button>
-	<div id="box"></div>
-	<button class="btn"></button>
 
-	<script src="../js/jquery-1.7.1.min.js"></script>
+	<button class="btn" id="btn-show">show</button><button class="btn" id="btn-hide">hide</button>
+	<div id="box" class="">
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+		<p>123</p>
+	</div>
+	<button class="btn">show2</button>
+	
+	<script src="../js/jquery.js"></script>
 	<script src="../js/transition.js"></script>
-	<script src="../js/showHide.js"></script>	
+	<script src="../js/showhide.js"></script>
 	<script>
-		var $box = $('#box');
-		// silent.init($box);
-		// css3.fadeSlideLeftRight.init($box);
+
+		var $box=$('#box');
+
 		$box.showHide({
 			css3: true,
 			js: true,
 			animation: 'slideLeftRight'
 		});
-
-		// 小A
-		$box.on('show shown hide hidden', function(e){
-			console.log(e.type);
-			if(e.type ==='show'){
-				$box.html('<p>我要显示了。</p>');
-			}
-			if(e.type === 'shown'){
-				setTimeout(function() {$box.html($box.html() + ' <p>我已经显示了。</p>');}, 1000);			
-			}
-		});
-		// 小C
-		$box.on('show shown', function(e){
-			if(e.type === 'show'){
-				$box.css('background-color','yellow');
-				setTimeout(function() {
-					$box.css('background-color','');
-				}, 1000);	
-				
-			}
-		})
-		$('#show').on('click', function(){
-			// silent.show($box);
-			// css3.fadeSlideLeftRight.show($box);
-			// js.fadeSlideUpDown.show($box);
-			
+		// js.fadeslideLeftRight.init($box);
+		$('#btn-show').on('click',function(){
+		
+			// js.fadeslideLeftRight.show($box);
 			$box.showHide('show');
-
 		});
-		$('#hide').on('click', function(){
-			
-			// silent.hide($box);
-			// css3.fadeSlideLeftRight.hide($box);	
-			// js.fadeSlideUpDown.hide($box);
-			$box.showHide('hide');	
+		$('#btn-hide').on('click',function(){
+			// js.fadeslideLeftRight.hide($box);
+			$box.showHide('hide');
+		})
+
+		$box.on('show shown hide hidden',function(e){
+			// if(e.type=='show'){
+			// 	$box.html('<p>i am going to show up</p>');
+			// }else if(e.type=='shown'){
+			// 	setTimeout(function(){
+			// 		$box.html($box.html()+'<p>I already showed up</p>')
+			// 	},1000);
+			// }
+			console.log(e.type);
 		})
 	</script>
 </body>

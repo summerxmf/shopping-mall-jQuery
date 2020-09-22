@@ -1,25 +1,24 @@
-
 (function(){
-	'user strict';
 	var transitionEndEventName = {
-		transition:'transitionend',
-		MozTransition:'transitionend',
-		WebkitTransition:'WebkitTransitionEnd',
-		OTransiton:'OTransitonend'
+		transition: 'transitionend',
+		MozTransition: 'transitionend',
+		WebkitTransition: 'webkitTransitionEnd',
+		OTransition: 'oTransitionEnd otransitionend'
 	};
-	var isSupport = false,
-		transitionEnd='';
-	for(var k in transitionEndEventName){
-		if(document.body.style[k]!==undefined){
+	var transitionEnd = '',
+		isSupport = false;
+
+	for(var name in transitionEndEventName){
+		if(document.body.style[name] !== undefined){
+			transitionEnd = transitionEndEventName[name];
 			isSupport = true;
-			transitionEnd = transitionEndEventName[k];
 			break;
 		}
 	}
-	window.mt = window.mt||{};
-	window.mt.transition ={
-		isSupport : isSupport,
-		end:transitionEnd
-	};
 
-})(jQuery)
+	window.mt = window.mt || {};
+	window.mt.transition = {
+		end: transitionEnd,
+		isSupport: isSupport
+	};
+})();

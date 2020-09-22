@@ -1,22 +1,32 @@
 [
 	{
 		"url": "###",
-		"name":"已卖出的宝贝"
+		"name": "Start a store"
 	},
 	{
 		"url": "###",
-		"name":"出售中的宝贝"
+		"name": "Sold items"
 	},
 	{
 		"url": "###",
-		"name":"卖家服务市场"
+		"name": "On sale"
 	},
 	{
 		"url": "###",
-		"name":"卖家培训中心"
+		"name": "Buyer service center"
 	},
 	{
 		"url": "###",
-		"name":"体验中心"
+		"name": "Seller trainning center"
+	},
+	{
+		"url": "###",
+		"name": "Free trial"
 	}
 ]
+
+
+
+
+
+

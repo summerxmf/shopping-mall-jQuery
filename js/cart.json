@@ -1,0 +1,62 @@
+[
+	{
+		"pic": "img/cart/1.png",
+		"name": "adidas Trainning Man",
+		"price": "95",
+		"num": "1"
+	},
+	{
+		"pic": "img/cart/2.png",
+		"name": "Olay multi-effect repair trilogy set",
+		"price": "65",
+		"num": "2"
+	},
+	{
+		"pic": "img/cart/3.png",
+		"name": "Apple iPhone 7 (A1660)",
+		"price": "1188",
+		"num": "1"
+	},
+	{
+		"pic": "img/cart/4.png",
+		"name": "Philips noodle maker HR2356/31",
+		"price": "204",
+		"num": "4"
+	},
+	{
+		"pic": "img/cart/5.png",
+		"name": "logitech G29",
+		"price": "999",
+		"num": "1"
+	},
+	{
+		"pic": "img/cart/1.png",
+		"name": "adidas Trainning Man",
+		"price": "95",
+		"num": "1"
+	},
+	{
+		"pic": "img/cart/2.png",
+		"name": "Olay multi-effect repair trilogy set",
+		"price": "65",
+		"num": "2"
+	},
+	{
+		"pic": "img/cart/3.png",
+		"name": "Apple iPhone 7 (A1660)",
+		"price": "1188",
+		"num": "1"
+	},
+	{
+		"pic": "img/cart/4.png",
+		"name": "Philips noodle maker HR2356/31",
+		"price": "204",
+		"num": "4"
+	},
+	{
+		"pic": "img/cart/5.png",
+		"name": "logitech G265 ",
+		"price": "999",
+		"num": "1"
+	}
+]
